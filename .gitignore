@@ -17,3 +17,4 @@ vignettes/*.pdf
 
 .Rbuildignore
 R42Api.Rproj
+.Rproj.user
