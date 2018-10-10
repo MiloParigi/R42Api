@@ -53,6 +53,6 @@ With this token, you can just use the [httr](https://github.com/r-lib/httr) pack
 req <- GET("https://api.intra.42.fr/v2/me", config = config(token = token_42))
 # Check for an error
 stop_for_status(req)
-# Giev you the content
+# Give you the content
 content(req)
 ```

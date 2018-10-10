@@ -1,7 +1,7 @@
 Package: R42Api
 Type: Package
 Title: Interact with 42 School API
-Version: 0.0.0.9000
+Version: 1.0.0
 Authors@R: person("Milo", "Parigi", email = "mparigi@student.42.fr",
   role = c("aut", "cre"))
 Description: This package gives you different functions to interact with the 42
