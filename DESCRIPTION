@@ -2,12 +2,15 @@ Package: R42Api
 Type: Package
 Title: Interact with 42 School API
 Version: 0.0.0.9000
-Author: person("Milo", "Parigi", email = "mparigi@student.42.fr",
+Authors@R: person("Milo", "Parigi", email = "mparigi@student.42.fr",
   role = c("aut", "cre"))
 Description: This package gives you different functions to interact with the 42
     School API (see: https://api.intra.42.fr). At this stage, you have multiple
     options to create an Oauth2 token for your API requests.
-License: MIT + file LICENSE.md
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1
+Imports:
+  httr,
+  jsonlite
