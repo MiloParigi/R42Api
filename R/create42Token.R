@@ -5,9 +5,7 @@
 #' Create an Oauth2.0 token for 42 API
 #'
 #' All those elements can be found in your application page, at
-#' https://profile.intra.42.fr/oauth/applications/{application_id}
-#'
-#' This is using an interactive
+#' https://profile.intra.42.fr/oauth/applications/\strong{application_id}
 #'
 #' @param uid String - Your application UID
 #' @param secret String - Your application secret
@@ -19,6 +17,11 @@
 create42Token <- function(uid,
                           secret,
                           redirect_uri) {
+
+  # Force variable type
+  uid <- as.character(uid)
+  secret <- as.character(secret)
+  redirect_uri <- as.character(redirect_uri)
 
   # Create the 42 token endpoint
   endpoint_42 <- oauth_endpoint(base_url = "https://api.intra.42.fr/oauth",
@@ -52,7 +55,32 @@ create42Token <- function(uid,
 #' @import jsonlite
 #' @export
 create42TokenfromJSON <- function(credentials) {
+
+  # List of supported params in the file
+  sup <- c("uid", "secret", "redirect_uri")
+
+  # Force variable type
+  credentials <- as.character(credentials)
+
+  # Check if file exists
+  if (!file.exists(credentials))
+    stop("The credentials file does not exist")
+
+  # Read the JSON file
   cred <- fromJSON(credentials)
 
+  # Check that we don't have extra parameters
+  if(!all(names(cred) %in% sup)) {
+    stop("The following extra parameter(s) are in the credentials file:\n",
+         paste(names(cred)[names(cred) %in% sup], sep = ", "))
+  }
+
+  # Check that we have all parameters
+  if(!all(sup %in% names(cred))) {
+    stop("The credentials file is missing the following parameter(s):\n",
+         paste(sup[sup %in% names(cred)], sep = ", "))
+  }
+
+  # Get the token
   create42Token(cred$uid, cred$secret, cred$redirect_uri)
 }

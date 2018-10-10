@@ -18,8 +18,5 @@ A Token2.0 reference class (RC) object, specific to 42.
 }
 \description{
 All those elements can be found in your application page, at
-https://profile.intra.42.fr/oauth/applications/{application_id}
-}
-\details{
-This is using an interactive
+https://profile.intra.42.fr/oauth/applications/\strong{application_id}
 }
