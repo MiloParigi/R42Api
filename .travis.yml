@@ -1,0 +1,5 @@
+language: r
+cache: 
+	- httr
+	- jsonlite
+warnings_are_errors: true
