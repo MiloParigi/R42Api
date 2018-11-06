@@ -1,6 +1,8 @@
  R42Api
  ======
 
+[![Build Status](https://travis-ci.com/MiloParigi/R42Api.svg?branch=master)](https://travis-ci.com/MiloParigi/R42Api)
+
 Overview
 --------
 This package gives you different functions to interact with the 42 School API.
@@ -13,13 +15,13 @@ Installation
 
 As this package is only useful for a few 42 students, it will surely never make it to CRAN. You'll need to use the [devtools](https://cran.r-project.org/web/packages/devtools/index.html) package to install it from Github.
 ``` r
-3 Install the devtools package
-# install.packages("devtools")
-# library("devtools")
+# Install the devtools package
+install.packages("devtools")
+library("devtools")
 
 # Install the development version from GitHub:
 devtools::install_github("MiloParigi/R42Api")
-# library("R42Api")
+library("R42Api")
 ```
 
 Usage
