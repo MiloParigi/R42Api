@@ -7,7 +7,8 @@
 create42TokenfromJSON(credentials)
 }
 \arguments{
-\item{credentials}{String - path to your credentials JSON file}
+\item{credentials}{String - path to your credentials JSON file or valid JSON
+string}
 }
 \value{
 A Token2.0 reference class (RC) object, specific to 42.
