@@ -4,6 +4,10 @@ context("Authentication token")
 #                                   Errors                                     #
 ################################################################################
 
+test_that("We are running non-interactively", {
+	expect_equal(interactive(), FALSE)
+})
+
 test_that("Authentication is failing without parameters", {
 	expect_error(create42Token())
 	expect_error(create42TokenfromJSON())
