@@ -20,7 +20,8 @@ test_that("Authentication is failing i the file does not exists", {
 
 # Missing JSON params
 test_that("Authentication is failing if there is missing parameters", {
-	expect_error(create42TokenfromJSON(toJSON(list(uid = 1, secret = 2), auto_unbox = TRUE)))
+	expect_error(create42TokenfromJSON(toJSON(list(uid = 1, secret = 2),
+																						auto_unbox = TRUE)))
 })
 
 ################################################################################

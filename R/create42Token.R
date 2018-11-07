@@ -41,7 +41,8 @@ create42Token <- function(uid,
     endpoint = endpoint_42,
     app = app_42,
     use_oob = FALSE,
-    client_credentials = TRUE
+    client_credentials = TRUE,
+    cache = cache
   	)
 
   return(token_42)
