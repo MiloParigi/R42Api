@@ -40,6 +40,7 @@ create42Token <- function(uid,
   token_42 <- oauth2.0_token(
     endpoint = endpoint_42,
     app = app_42,
+    use_oob = FALSE,
     client_credentials = TRUE
   	)
 
