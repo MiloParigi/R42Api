@@ -22,6 +22,7 @@ run_before_test.R
 R42Api.Rproj
 .Rproj.user
 
+# Ignore credentials that are not encoded
 inst/test_login/\.httr_oauth
-
 inst/test_login/credentials\.json
+inst/test_login/secrets\.tar
