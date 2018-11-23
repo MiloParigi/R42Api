@@ -47,10 +47,13 @@ token_42 <- create42Token(uid = YOUR_UID,
 ```
 
 I highly suggest you use the first method for scripts, because having credentials in your code is **ALWAYS** a bad idea.
+It's also the function used for testing purposes in [TravisCI](https://travis-ci.com/MiloParigi/R42Api)
 
 ### Interact with the api
 With this token, you can just use the [httr](https://github.com/r-lib/httr) package to interact with the API, by including the token in the ``config`` of your request:
 ``` r
+# Load the httr library
+library(httr)
 # Get infos about yourself
 req <- GET("https://api.intra.42.fr/v2/me", config = config(token = token_42))
 # Check for an error
@@ -58,3 +61,17 @@ stop_for_status(req)
 # Give you the content
 content(req)
 ```
+
+Contributing
+------------
+TravisCI is using my own credentials for testing, and they are encoded using the [travis client](https://github.com/travis-ci/travis.rb). Locally, you'll need to use your own to run the tests.
+
+You will need to create two files in your **inst/travis_login** to pass the basic auth testing:
+ - **credentials.json**: A JSON file containing your **uid**, your **secret** and your **redirect_uri**
+ - **.httr_oauth**: A cached token, created by one of the two authentication function
+ 
+ No pull request will be accepted without unit-testing, update of NEWS and README (if necessary)
+ files and a passing TravisCI build.
+ 
+ ### Contributors
+  - Milo Parigi - <mparigi@student.42.fr> - Creator
