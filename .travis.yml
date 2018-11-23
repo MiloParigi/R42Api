@@ -4,7 +4,8 @@ cache:
 - jsonlite
 warnings_are_errors: true
 before_install:
-- openssl aes-256-cbc -K $encrypted_32a1e1ed74da_key -iv $encrypted_32a1e1ed74da_iv
-  -in inst/travis_login/.httr-oauth.enc -out inst/travis_login/.httr-oauth -d
+- openssl aes-256-cbc -K $encrypted_971651b3706f_key -iv $encrypted_971651b3706f_iv
+  -in inst/test_login/.httr-oauth.enc -out inst/test_login/.httr-oauth -d
 - openssl aes-256-cbc -K $encrypted_05e68795aa75_key -iv $encrypted_05e68795aa75_iv
-  -in inst/travis_login/credentials.json.enc -out inst/travis_login/credentials.json -d
+  -in inst/test_login/credentials.json.enc -out inst/test_login/credentials.json
+  -d
