@@ -4,7 +4,6 @@ cache:
 - jsonlite
 warnings_are_errors: true
 before_install:
-- exit
 - openssl aes-256-cbc -K $encrypted_971651b3706f_key -iv $encrypted_971651b3706f_iv
   -in inst/test_login/secrets.tar.enc -out inst/test_login/secrets.tar -d
 - tar xvf inst/test_login/secrets.tar
