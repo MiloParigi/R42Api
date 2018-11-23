@@ -5,4 +5,4 @@ cache:
 warnings_are_errors: true
 before_install:
 - openssl aes-256-cbc -K $encrypted_05e68795aa75_key -iv $encrypted_05e68795aa75_iv
-  -in credentials.json.enc -out credentials.json -d
+  -in inst/credentials.json.enc -out inst/credentials.json -d
