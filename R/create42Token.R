@@ -52,6 +52,7 @@ create42Token <- function(uid,
 #'
 #' See \link[R42Api]{create42Token} to know what variables are needed.
 #'
+#' @inheritParams create42Token
 #' @param credentials String - path to your credentials JSON file or valid JSON
 #' string
 #'

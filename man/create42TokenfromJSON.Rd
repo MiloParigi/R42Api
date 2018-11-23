@@ -4,11 +4,16 @@
 \alias{create42TokenfromJSON}
 \title{Create an Oauth2.0 token for 42 API using a credential files}
 \usage{
-create42TokenfromJSON(credentials)
+create42TokenfromJSON(credentials, cache = TRUE)
 }
 \arguments{
 \item{credentials}{String - path to your credentials JSON file or valid JSON
 string}
+
+\item{cache}{A logical value or a string. \code{TRUE} means to cache
+using the default cache file \code{.httr-oauth}, \code{FALSE} means
+don't cache, and \code{NA} means to guess using some sensible heuristics.
+A string mean use the specified path as the cache file.}
 }
 \value{
 A Token2.0 reference class (RC) object, specific to 42.
