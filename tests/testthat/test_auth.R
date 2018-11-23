@@ -28,7 +28,13 @@ test_that("Authentication is failing if there is missing parameters", {
 
 # Authentication ###############################################################
 
+cred <- system.file("credentials.json", package = "R42Api")
+
+test_that("The credential file is present in the package build", {
+  expect_equal(file.exists(cred), TRUE)
+})
+
 test_that("Authentication is working", {
-	expect_equal(class(create42TokenfromJSON(system.file("credentials.json", package = "R42Api"))),
+	expect_equal(class(create42TokenfromJSON(cred)),
 							 c("Token2.0", "Token", "R6"))
 })
