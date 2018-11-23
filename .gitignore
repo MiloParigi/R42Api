@@ -22,4 +22,6 @@ run_before_test.R
 R42Api.Rproj
 .Rproj.user
 
-inst/credentials\.json
+inst/travis_login/\.httr_oauth
+
+inst/travis_login/credentials\.json

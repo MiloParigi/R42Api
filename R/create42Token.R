@@ -58,7 +58,8 @@ create42Token <- function(uid,
 #' @return A Token2.0 reference class (RC) object, specific to 42.
 #' @import jsonlite
 #' @export
-create42TokenfromJSON <- function(credentials) {
+create42TokenfromJSON <- function(credentials,
+                                  cache = TRUE) {
 
   # List of supported params in the file
   sup <- c("uid", "secret", "redirect_uri")
@@ -86,5 +87,5 @@ create42TokenfromJSON <- function(credentials) {
   }
 
   # Get the token
-  create42Token(cred$uid, cred$secret, cred$redirect_uri)
+  create42Token(cred$uid, cred$secret, cred$redirect_uri, cache)
 }

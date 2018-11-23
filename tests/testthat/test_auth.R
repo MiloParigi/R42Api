@@ -28,13 +28,18 @@ test_that("Authentication is failing if there is missing parameters", {
 
 # Authentication ###############################################################
 
-cred <- system.file("credentials.json", package = "R42Api")
+cred <- system.file("travis_login", "credentials.json", package = "R42Api")
+cache <- system.file("travis_login", ".httr_oauth", package = "R42Api")
 
-test_that("The credential file is present in the package build", {
+test_that("The credential JSON is present in the package build", {
   expect_equal(file.exists(cred), TRUE)
 })
 
+test_that("The .httr_auth file is present in the package build", {
+  expect_equal(file.exists(cache), TRUE)
+})
+
 test_that("Authentication is working", {
-	expect_equal(class(create42TokenfromJSON(cred)),
+	expect_equal(class(create42TokenfromJSON(cred, cache = cache)),
 							 c("Token2.0", "Token", "R6"))
 })
