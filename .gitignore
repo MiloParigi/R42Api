@@ -21,3 +21,5 @@ run_before_test.R
 .Rbuildignore
 R42Api.Rproj
 .Rproj.user
+
+inst/credentials\.json

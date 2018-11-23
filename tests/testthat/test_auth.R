@@ -1,8 +1,6 @@
 context("Authentication token")
 
-################################################################################
-#                                   Errors                                     #
-################################################################################
+# Errors #######################################################################
 
 test_that("We are running non-interactively", {
 	expect_equal(interactive(), FALSE)
@@ -28,18 +26,9 @@ test_that("Authentication is failing if there is missing parameters", {
 																						auto_unbox = TRUE)))
 })
 
-################################################################################
-#                             Get TravisCI values                              #
-################################################################################
+# Authentication ###############################################################
 
-uid <- Sys.getenv("R42Api.UID", unset = NA)
-secret <- Sys.getenv("R42Api.SECRET", unset = NA)
-uri <- Sys.getenv("R42Api.URI", unset = NA)
-
-test_that("Authentication is returning a token object", {
-	expect_equal(class(create42Token(uid, secret, uri, cache = FALSE)),
+test_that("Authentication is working", {
+	expect_equal(class(create42TokenfromJSON(system.file("credentials.json", package = "R42Api"))),
 							 c("Token2.0", "Token", "R6"))
 })
-
-rm(uid, secret, uri)
-gc()
