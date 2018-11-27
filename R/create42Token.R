@@ -7,6 +7,7 @@
 #' All those elements can be found in your application page, at
 #' https://profile.intra.42.fr/oauth/applications/\strong{application_id}
 #'
+#' @inheritParams httr::oauth2.0_token
 #' @param uid String - Your application UID
 #' @param secret String - Your application secret
 #' @param redirect_uri String - Your application redirect uri
@@ -16,7 +17,8 @@
 #' @export
 create42Token <- function(uid,
                           secret,
-                          redirect_uri) {
+                          redirect_uri,
+													cache = TRUE) {
 
   # Force variable type
   uid <- as.character(uid)
@@ -38,9 +40,10 @@ create42Token <- function(uid,
   token_42 <- oauth2.0_token(
     endpoint = endpoint_42,
     app = app_42,
-    use_oob = TRUE,
-    cache = TRUE
-  )
+    use_oob = FALSE,
+    client_credentials = TRUE,
+    cache = cache
+  	)
 
   return(token_42)
 }
@@ -49,12 +52,15 @@ create42Token <- function(uid,
 #'
 #' See \link[R42Api]{create42Token} to know what variables are needed.
 #'
-#' @param credentials String - path to your credentials JSON file
+#' @inheritParams create42Token
+#' @param credentials String - path to your credentials JSON file or valid JSON
+#' string
 #'
 #' @return A Token2.0 reference class (RC) object, specific to 42.
 #' @import jsonlite
 #' @export
-create42TokenfromJSON <- function(credentials) {
+create42TokenfromJSON <- function(credentials,
+                                  cache = TRUE) {
 
   # List of supported params in the file
   sup <- c("uid", "secret", "redirect_uri")
@@ -63,15 +69,15 @@ create42TokenfromJSON <- function(credentials) {
   credentials <- as.character(credentials)
 
   # Check if file exists
-  if (!file.exists(credentials))
-    stop("The credentials file does not exist")
+  if (!file.exists(credentials) & !jsonlite::validate(credentials))
+    stop("credentials parameter is neither a file nor a valid JSON string")
 
-  # Read the JSON file
+  # Read the JSON file or keep the string if credentials is not a file
   cred <- fromJSON(credentials)
 
   # Check that we don't have extra parameters
   if(!all(names(cred) %in% sup)) {
-    stop("The following extra parameter(s) are in the credentials file:\n",
+    warnings("The following extra parameter(s) are in the credentials file:\n",
          paste(names(cred)[names(cred) %in% sup], sep = ", "))
   }
 
@@ -82,5 +88,5 @@ create42TokenfromJSON <- function(credentials) {
   }
 
   # Get the token
-  create42Token(cred$uid, cred$secret, cred$redirect_uri)
+  create42Token(cred$uid, cred$secret, cred$redirect_uri, cache)
 }
